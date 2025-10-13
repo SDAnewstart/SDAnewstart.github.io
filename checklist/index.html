@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWSTART 실천 체크리스트</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.5s ease;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #1a73e8;
+        }
+        h2 {
+            border-bottom: 2px solid;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        h3 {
+            text-align: center;
+        }
+        .intro-page, .result-page {
+            text-align: center;
+        }
+        .intro-page label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .intro-page input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .checklist-item {
+            margin-bottom: 15px;
+        }
+        .checklist-item label {
+            display: block;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+            transition: background-color 0.3s;
+        }
+        .checklist-item input[type="checkbox"] {
+            display: none;
+        }
+        .checklist-item input[type="checkbox"]:checked + label {
+            background-color: #e8f0fe;
+            border-color: #1a73e8;
+            font-weight: bold;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .next-btn, .start-btn {
+            padding: 12px 25px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .next-btn:hover, .start-btn:hover {
+            background-color: #155bb5;
+        }
+        .result-score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #1a73e8;
+            margin: 20px 0;
+        }
+        .result-message-box {
+            display: block;
+            background-color: #FFE6F2;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #993366;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .highlight-intro {
+            background-color: #E6FFE6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #006400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="page-intro" class="page active">
+        <h1 class="highlight-intro">당신의 NEWSTART 실천 정도를<br>알아보겠습니다~!</h1>
+        <div class="intro-page">
+            <label for="userName">이름:</label>
+            <input type="text" id="userName" placeholder="이름을 입력하세요">
+            <div class="button-container">
+                <button class="start-btn" onclick="showPage('page-nutrition')">시작하기</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-nutrition" class="page">
+        <h2>NUTRITION</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="nutrition-s1">
+            <label for="nutrition-s1">적당량의 식사</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="nutrition-s2">
+            <label for="nutrition-s2">규칙적인 식사</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="nutrition-s3">
+            <label for="nutrition-s3">골고루 먹기: 하루 1끼 이상 채소, 과일, 통곡류, 콩류</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="nutrition-s4">
+            <label for="nutrition-s4">샐러드 등 채소 먹기: 하루 1끼 이상</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="nutrition-s5">
+            <label for="nutrition-s5">견과류 먹기: 손으로 작은 반 줌, 일주일에 4회</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="nutrition-w1">
+            <label for="nutrition-w1">건강한 조리법으로 조리한 음식 먹기: 굽거나 튀기기보다 삶기, 찌기, 끓인 음식</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="nutrition-w2">
+            <label for="nutrition-w2">골고루 먹기: 매끼 채소, 과일, 통곡류, 콩류</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="nutrition-w3">
+            <label for="nutrition-w3">설탕 섭취 줄이기: 50g(12티스푼) 이하</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="nutrition-w4">
+            <label for="nutrition-w4">고염식 피하기: 5g(약 소금 2작은술, 나트륨 2000mg) 이하 섭취</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="nutrition-r1">
+            <label for="nutrition-r1">꼭꼭 씹어 먹기: 30~50번</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="nutrition-r2">
+            <label for="nutrition-r2">샐러드 등 채소 먹기: 하루 3끼에 모두 포함</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="nutrition-r3">
+            <label for="nutrition-r3">채식하기(계란, 우유 포함)</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-exercise')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-exercise" class="page">
+        <h2>EXERCISE</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="exercise-s1">
+            <label for="exercise-s1">매일 모든 기회를 이용하여 신체활동하기: 집안청소, 엘리베이터 안타기, 대중교통 이용 등</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="exercise-s2">
+            <label for="exercise-s2">유산소 운동하기: 30분 이상, 주 5회(수영, 자전거, 빠르게 걷기 등)</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="exercise-w1">
+            <label for="exercise-w1">좌식 생활 줄이기: 업무나 공부시간 외에 앉거나 눕는 시간 매우 드물게(2시간 미만)</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="exercise-r1">
+            <label for="exercise-r1">근육강화운동: 주 2~3회, 8~10번 반복하여 2~3세트씩(웨이트 트레이닝, 헬스, 근력강화 스트레칭, 요가 등)</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="exercise-r2">
+            <label for="exercise-r2">좌식 생활 줄이기: 업무나 공부시간 외에 앉거나 눕는 시간 매우 드물게(1시간 미만)</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-water')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-water" class="page">
+        <h2>WATER & HYGIENE</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="water-s1">
+            <label for="water-s1">매일 물 마시기: 미지근하거나 시원한 물, 5컵 정도 마시기, 운동하거나 야외 활동시 추가(심장질환, 심한 간경변, 만성콩팥병 환자 등은 제외)</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="water-s2">
+            <label for="water-s2">하루 2회 이상 양치(저녁식사 이후 or 잠들기 전 필수)</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="water-w1">
+            <label for="water-w1">매일 샤워나 반신욕 하기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="water-w2">
+            <label for="water-w2">치실/치간칫솔 가끔 사용</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="water-r1">
+            <label for="water-r1">치실/치간칫솔 매일 사용</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-sunlight')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-sunlight" class="page">
+        <h2>SUNLIGHT</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="sunlight-s1">
+            <label for="sunlight-s1">일상생활에서 햇빛을 가까이하기</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="sunlight-w1">
+            <label for="sunlight-w1">매일 규칙적으로 햇볕 쬐기: 여름에는 아침에 10분, 겨울에는 낮 시간에 30분</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-temperance')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-temperance" class="page">
+        <h2>TEMPERANCE</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="temperance-s1">
+            <label for="temperance-s1">야식하지 않기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="temperance-s2">
+            <label for="temperance-s2">과식하지 않기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="temperance-s3">
+            <label for="temperance-s3">스마트폰, TV, 게임 줄이기: 2시간 미만</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="temperance-w1">
+            <label for="temperance-w1">원망, 미움, 분노, 절망, 두려움, 걱정 등 부정적인 생각하지 않기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="temperance-w2">
+            <label for="temperance-w2">금주</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="temperance-r1">
+            <label for="temperance-r1">금연</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="temperance-r2">
+            <label for="temperance-r2">간식 먹지 않기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="temperance-r3">
+            <label for="temperance-r3">커피 마시지 않기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="temperance-r4">
+            <label for="temperance-r4">스마트폰, TV, 게임 줄이기: 1시간 미만</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-air')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-air" class="page">
+        <h2>AIR</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="air-s1">
+            <label for="air-s1">자주 환기시키기: 하루 최소 3회, 10분 이상 환기시키기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="air-s2">
+            <label for="air-s2">집안, 주변 환경 청소하기</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="air-w1">
+            <label for="air-w1">심호흡 하기: 1~2시간 마다, 호흡할 때는 코로 숨을 들이마시고 배로 호흡함</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="air-r1">
+            <label for="air-r1">산, 숲, 바다로 나가기: 주 1회 이상</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-resting')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-resting" class="page">
+        <h2>RESTING</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="resting-s1">
+            <label for="resting-s1">매일 몸과 마음을 위한 휴식 시간 할애</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="resting-s2">
+            <label for="resting-s2">충분한 수면: 매일 7~8시간 정도의 충분히 자기(성인 기준)</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="resting-w1">
+            <label for="resting-w1">규칙적인 수면: 밤 10시 이전에 취침하도록 하며 가급적 12시는 넘기지 않도록 함</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="resting-w2">
+            <label for="resting-w2">과도한 낮잠 피하기: 낮잠은 30분 정도, 1시간을 넘기지 않도록 함</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="resting-r1">
+            <label for="resting-r1">9시 이후 스마트폰, TV, 컴퓨터 등 전자 기기 중지하기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="resting-r2">
+            <label for="resting-r2">매일 감사노트 쓰기</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showPage('page-trust')">다음</button>
+        </div>
+    </div>
+
+    <div id="page-trust" class="page">
+        <h2>TRUST IN GOD</h2>
+        <h3>Starter</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="trust-s1">
+            <label for="trust-s1">말씀읽기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="trust-s2">
+            <label for="trust-s2">개인 기도 하루 3회</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="trust-s3">
+            <label for="trust-s3">하나님 말씀 경청하기(묵상, 명상)</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="1" id="trust-s4">
+            <label for="trust-s4">주 1회 예배 참석하기</label>
+        </div>
+        <h3>Walker</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="trust-w1">
+            <label for="trust-w1">매일 찬양하기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="2" id="trust-w2">
+            <label for="trust-w2">주 2회 예배 참석하기</label>
+        </div>
+        <h3>Runner</h3>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="trust-r1">
+            <label for="trust-r1">매일 성경말씀 암송하기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="trust-r2">
+            <label for="trust-r2">1일 1회 봉사로 이웃 사랑 실천하기</label>
+        </div>
+        <div class="checklist-item">
+            <input type="checkbox" data-score="3" id="trust-r3">
+            <label for="trust-r3">주 3회 예배 참석하기</label>
+        </div>
+        <div class="button-container">
+            <button class="next-btn" onclick="showResult()">결과 보기</button>
+        </div>
+    </div>
+
+    <div id="page-result" class="page">
+        <h2 id="resultName"></h2>
+        <div class="result-score" id="resultScore">0점</div>
+        <div class="result-message" id="resultMessage"></div>
+    </div>
+</div>
+
+<script>
+    const pages = document.querySelectorAll('.page');
+    // 총점이 100점이 되도록 모든 점수를 조정합니다.
+    const originalTotalScore = 
+        (5 * 1) + (4 * 2) + (3 * 3) + // Nutrition
+        (2 * 1) + (1 * 2) + (2 * 3) + // Exercise
+        (2 * 1) + (2 * 2) + (1 * 3) + // Water
+        (1 * 1) + (1 * 2) + // Sunlight
+        (3 * 1) + (2 * 2) + (4 * 3) + // Temperance
+        (2 * 1) + (1 * 2) + (1 * 3) + // Air
+        (2 * 1) + (2 * 2) + (2 * 3) + // Resting
+        (4 * 1) + (2 * 2) + (3 * 3);  // Trust in God
+    
+    // 점수 보너스: 총점 100점-99점 = 1점
+    const scoreBonus = 1;
+    const totalPossibleScore = originalTotalScore + scoreBonus;
+    
+    let currentScore = 0;
+    let userName = '';
+
+    const pageStyles = {
+        'page-intro': { bg: '#f4f4f9' },
+        'page-nutrition': { bg: '#E6FFE6', border: '#006400' },
+        'page-exercise': { bg: '#FFE6F2', border: '#993366' },
+        'page-water': { bg: '#E6F2FF', border: '#000080' },
+        'page-sunlight': { bg: '#FFF2E6', border: '#CC9900' },
+        'page-temperance': { bg: '#E6FFFF', border: '#008080' },
+        'page-air': { bg: '#E6F7FF', border: '#0000FF' },
+        'page-resting': { bg: '#F2F2F2', border: '#696969' },
+        'page-trust': { bg: '#FFE6E6', border: '#8B0000' },
+        'page-result': { bg: '#E8F0FE', border: '#1a73e8' }
+    };
+
+    function showPage(pageId) {
+        pages.forEach(page => page.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        
+        const style = pageStyles[pageId];
+        document.body.style.backgroundColor = style.bg;
+        
+        const headings = document.getElementById(pageId).querySelectorAll('h2');
+        if (headings.length > 0) {
+            headings.forEach(h2 => h2.style.borderColor = style.border);
+            headings.forEach(h2 => h2.style.color = style.border);
+        }
+
+        if (pageId === 'page-intro') {
+            document.getElementById('userName').value = '';
+        } else if (pageId === 'page-result') {
+            calculateFinalScore();
+        }
+    }
+
+    function calculateFinalScore() {
+        userName = document.getElementById('userName').value || '이름 없음';
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let rawScore = 0;
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                rawScore += parseInt(checkbox.dataset.score);
+            }
+        });
+
+        currentScore = rawScore + scoreBonus;
+        
+        const resultName = document.getElementById('resultName');
+        const resultScore = document.getElementById('resultScore');
+        const resultMessage = document.getElementById('resultMessage');
+        const percentage = (currentScore / totalPossibleScore) * 100;
+
+        resultName.textContent = `${userName}님의 점수`;
+        resultScore.textContent = `${currentScore} / ${totalPossibleScore}점`;
+
+        let messageText = '';
+        if (percentage >= 75) {
+            messageText = '당신은 Expert NEWSTART 실천가입니다.\n매우 훌륭합니다.';
+        } else if (percentage >= 50) {
+            messageText = '당신은 Advanced NEWSTART 실천가입니다.\n훌륭합니다.';
+        } else if (percentage >= 25) {
+            messageText = '당신은 Intermediate NEWSTART 실천가입니다.\n조금만 더 노력하시면 됩니다.';
+        } else {
+            messageText = '당신은 Beginner NEWSTART 실천가입니다.\n열심히 노력하시면 됩니다!';
+        }
+        
+        resultMessage.innerHTML = `<div class="result-message-box">${messageText}</div>`;
+    }
+
+    function showResult() {
+        showPage('page-result');
+    }
+
+    // Checkboxes event listeners
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            // No need to calculate score on each change, only at the end
+        });
+    });
+
+    // Initial page load
+    document.addEventListener('DOMContentLoaded', () => {
+        showPage('page-intro');
+    });
+
+</script>
+
+</body>
+</html>
