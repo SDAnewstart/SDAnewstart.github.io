@@ -1,75 +1,37 @@
-<!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NEWSTART 학회</title>
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-  <style>
-    /* 홈 전용 살짝 추가 스타일 */
-    .hero{background:#fff;border-bottom:1px solid var(--ring)}
-    .hero .wrap{display:grid;gap:20px;align-items:center;grid-template-columns:1fr}
-    @media(min-width:980px){ .hero .wrap{grid-template-columns:320px 1fr} }
-    .logoBox{display:flex;flex-direction:column;align-items:center;gap:12px}
-    .logoBox img{max-width:220px;height:auto}
-    .promo img{width:100%;height:auto;border-radius:12px;border:1px solid var(--ring);background:#f6f7f9}
-    .section-title{margin:.6rem 0 .6rem;font-size:clamp(18px,3vw,26px)}
-    footer{border-top:1px solid var(--ring);background:#fff;margin-top:28px}
-    footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
-  </style>
-</head>
-<body>
-  <a id="top" class="sr-only">top</a>
+<main class="container">
+<section class="hero">
+<div>
+      <span class="badge">Lifestyle Medicine × Faith</span>
+      <span class="badge">Trust in God × Medicine</span>
+<h1 class="h1">NEWSTART</h1>
+<p class="subtitle">영양·운동·물·햇빛·공기·휴식·절제·하나님을 신뢰함</p>
+<div class="quick-row">
+<a href="/checklist/" class="chip green">자가점검</a>
+<a href="/news/" class="chip pink">소식</a>
+<a href="/cme/" class="chip blue">CME</a>
+<a href="/join/" class="chip gold">회원 가입</a>
+</div>
 
-  <!-- HERO: 좌측 로고(작게) + 우측 홍보 이미지 -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="logoBox">
-        <!-- 로고 파일을 /assets/img/logo.png 로 업로드해 주세요 -->
-        <img src="/assets/img/logo.png" alt="NEWSTART 학회 로고" />
-        <div style="text-align:center">
-          <h1 class="title" style="margin:.2rem 0 .2rem;">NEWSTART 학회</h1>
-          <p style="margin:0;color:var(--muted)">8가지 좋은 생활습관으로 건강과 신앙을 회복하는 학회</p>
-        </div>
-      </div>
-      <div class="promo">
-        <!-- 홍보 이미지를 /assets/img/hero.jpg 로 올리면 자동 표시됩니다 -->
-        <img src="/assets/img/hero.jpg" alt="NEWSTART 학회 홍보 이미지" />
-      </div>
-    </div>
-  </section>
+<div class="grid">
+<a class="btn navy" href="/topics/intro/">NEWSTART 소개</a>
+<a class="btn mint" href="/topics/nutrition/">NUTRITION 음식</a>
+<a class="btn pink" href="/topics/exercise/">EXERCISE 운동</a>
+<a class="btn blue" href="/topics/water/">WATER 물</a>
+<a class="btn yellow" href="/topics/sunshine/">SUNSHINE 햇빛</a>
+<a class="btn teal" href="/topics/temperance/">TEMPERANCE 절제</a>
+<a class="btn cyan" href="/topics/air/">AIR 공기</a>
+<a class="btn gray" href="/topics/rest/">RESTING 휴식</a>
+<a class="btn red" href="/topics/trust/">TRUST IN GOD 하나님을 신뢰함</a>
+</div>
+</div>
+<div class="card hero-image">
+<img src="/assets/img/hero.jpg" alt="홍보 이미지">
+</div>
+</section>
 
-  <!-- 메인 네비게이션 버튼 그리드 -->
-  <main class="wrap" style="margin-top:18px">
-    <h2 class="section-title">주제 바로가기</h2>
-    <nav class="btns" aria-label="토픽 이동">
-      <a class="btn navy" href="/topics/intro/">NEWSTART 소개</a>
-      <a class="btn mint" href="/topics/nutrition/">NUTRITION 음식</a>
-      <a class="btn pink" href="/topics/exercise/">EXERCISE 운동</a>
-      <a class="btn blue" href="/topics/water/">WATER 물</a>
-      <a class="btn yellow" href="/topics/sunshine/">SUNSHINE 햇빛</a>
-      <a class="btn teal" href="/topics/temperance/">TEMPERANCE 절제</a>
-      <a class="btn cyan" href="/topics/air/">AIR 공기</a>
-      <a class="btn gray" href="/topics/rest/">RESTING 휴식</a>
-      <a class="btn red" href="/topics/trust/">TRUST IN GOD 하나님을 신뢰함</a>
-    </nav>
-
-    <!-- 간단 소식 영역 (수동 편집 or 추후 Jekyll로 대체 가능) -->
-    <section style="margin:26px 0 8px">
-      <h2 class="section-title">소식</h2>
-      <ul style="margin:0;padding-left:1.1rem;line-height:1.9">
-        <li>학회 창립 준비 중 (일자/장소 추후 공지)</li>
-        <li>자가점검 프로그램 공개: <a href="/checklist/">/checklist/</a></li>
-        <li>학술대회 안내·CME 공지 예정</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <small>© NEWSTART 학회</small>
-      <small><a href="mailto:contact@example.org">문의</a></small>
-    </div>
-  </footer>
+<footer class="footer">
+<div class="inner">© NEWSTART Medical Society</div>
+</footer>
+</main>
 </body>
 </html>
