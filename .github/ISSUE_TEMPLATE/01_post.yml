@@ -1,0 +1,26 @@
+name: 게시글 업로드 요청
+description: 레터/소식/행사 페이지에 게시할 내용을 제출합니다.
+title: "[업로드] 글 제목을 입력하세요"
+body:
+  - type: input
+    id: section
+    attributes:
+      label: 섹션
+      description: letters / news / events 중 선택
+      placeholder: letters
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: 본문(Markdown)
+      description: 본문을 Markdown으로 붙여넣으세요.
+    validations:
+      required: true
+  - type: checkboxes
+    id: coi
+    attributes:
+      label: COI(이해상충)
+      options:
+        - label: 이해상충이 없습니다.
+        - label: 이해상충이 있으며, 본문에 명시했습니다.

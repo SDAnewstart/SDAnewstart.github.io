@@ -1,0 +1,16 @@
+---
+layout: home
+title: 홈
+---
+
+# 국제성경건강학회 ISBHS
+
+![대표 이미지](/assets/img/hero-headshot.png)
+
+**그리스도 중심의 전인적 건강과 치유**(Christ-centered Holistic Health & Healing)
+
+- **학회 레터**: 근거기반 리뷰·사례·논평을 신속 공개
+- **표준/가이드**: NEWSTART 표준 강의안·권고문
+- **행사**: 포럼·워크숍·강사양성
+
+> GitHub Pages로 운영됩니다. 문의: <isbhs@proton.me>

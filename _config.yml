@@ -1,0 +1,18 @@
+title: 국제성경건강학회 ISBHS
+description: "Christ-centered Holistic Health & Healing — 공식 레터 · 소식 · 자료"
+url: ""
+baseurl: ""
+theme: minima
+lang: ko
+timezone: Asia/Seoul
+header_pages:
+  - about.md
+  - letters/index.md
+  - news/index.md
+  - events/index.md
+  - resources/index.md
+markdown: kramdown
+kramdown:
+  input: GFM
+email: isbhs@proton.me
+github_username: isbhs

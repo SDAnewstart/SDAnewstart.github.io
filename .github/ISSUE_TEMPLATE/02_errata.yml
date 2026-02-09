@@ -1,0 +1,14 @@
+name: 오탈자/정정 요청
+description: 문서의 오탈자 또는 정정 요청을 제보합니다.
+title: "[정정] 문서/링크 제목"
+body:
+  - type: input
+    id: page
+    attributes:
+      label: 페이지 URL
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: 상세 내용
