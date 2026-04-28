@@ -1,6 +1,7 @@
 # ISBHS (국제성경건강학회) — GitHub Pages
 
 비용 없는 정적 웹(학회 레터/소식/행사/자료) 운영을 위한 최소 구성입니다.
+웹사이트 준비중...
 
 ## 게시 방법
 1) Settings > Pages > Deploy from a branch — Branch: `main`, Folder: `/ (root)`
